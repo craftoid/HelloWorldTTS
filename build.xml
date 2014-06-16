@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+
+<project>
+
+    <property name="debuglevel" value="source,lines,vars"/>
+    <property name="target" value="1.7"/>
+    <property name="source" value="1.7"/>
+
+    <property name="jarfile" value="dist/speak.jar"/>
+    <property name="mainclass" value="HelloWorldTTS"/>
+
+    <path id="classpath">
+        <pathelement path="bin" />
+        <fileset dir="${basedir}">
+            <include name="lib/**/*.jar" />
+        </fileset>
+    </path>
+
+    <pathconvert property="manifest.classpath" pathsep=" ">
+        <path refid="classpath" />
+        <globmapper from = "${basedir}/*.jar" to = "*.jar" />
+    </pathconvert>
+
+    <target name="init">
+        <mkdir dir="bin"/>
+        <mkdir dir="dist"/>
+        <copy includeemptydirs="false" todir="bin">
+            <fileset dir="src">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+    </target>
+
+    <target name="clean">
+        <delete dir="bin"/>
+        <delete dir="dist"/>
+    </target>
+
+    <target name="build" depends="init">
+        <javac debug="true" debuglevel="${debuglevel}" destdir="bin" includeantruntime="false" source="${source}" target="${target}">
+            <src path="src"/>
+            <classpath refid="classpath"/>
+        </javac>
+    </target>
+
+    <target name="dist" depends="build">
+        <jar destfile="${jarfile}">
+            <fileset dir="bin" />
+            <manifest>
+              <attribute name="Main-Class" value="${mainclass}" />
+		            <attribute name="Class-Path" value="${manifest.classpath}" />
+            </manifest>
+        </jar>
+        <copy todir="dist/lib">
+            <fileset dir="lib" />
+        </copy>
+    </target>
+
+    <target name="run" depends="build">
+      <java classname="${mainclass}" failonerror="true" fork="yes">
+            <classpath refid="classpath" />
+        </java>
+    </target>
+
+</project>

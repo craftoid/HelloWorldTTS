@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="lib/freetts-1.2/cmu_time_awb.jar"/>
+	<classpathentry kind="lib" path="lib/freetts-1.2/cmu_us_kal.jar"/>
+	<classpathentry kind="lib" path="lib/freetts-1.2/cmudict04.jar"/>
+	<classpathentry kind="lib" path="lib/freetts-1.2/cmulex.jar"/>
+	<classpathentry kind="lib" path="lib/freetts-1.2/cmutimelex.jar"/>
+	<classpathentry kind="lib" path="lib/freetts-1.2/en_us.jar"/>
+	<classpathentry kind="lib" path="lib/freetts-1.2/freetts-jsapi10.jar"/>
+	<classpathentry kind="lib" path="lib/freetts-1.2/freetts.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
